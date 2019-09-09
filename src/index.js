@@ -1,3 +1,6 @@
+import * as firebase from 'firebase/app';
+
+import { firebaseConfig } from './firebaseConfig';
 import { validateEmail, validatePhoneNumber } from './helpers/validators';
 import { generateErrorHtml, removeErrorsDOM } from './helpers/errorHandlers';
 
@@ -12,6 +15,8 @@ const phoneNumber = document.querySelector('#phoneNumber');
 const submitButton = document.querySelector('.btn');
 const emailBlock = document.querySelector('#emailBlock');
 const phoneBlock = document.querySelector('#phoneBlock');
+
+firebase.initializeApp(firebaseConfig);
 
 email.addEventListener('input', event => {
   let error = validateEmail(event.target.value, phoneNumber.value);
